@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trámites de Gestión Social – Municipalidad de Santa Rosa</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --blue-dark: #003f7e;
+        --blue-mid: #0066b2;
+        --blue-light: #00a0e3;
+        --pink: #ec0e6b;
+        --gray-dark: #231f20;
+        --gray-mid: #626366;
+        --gray-light: #b5b7b9;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #f4f6f9;
+        color: var(--gray-dark);
+      }
+
+      /* ── HEADER ── */
+      .header-top {
+        background: white;
+        padding: 14px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        height: 48px;
+        width: auto;
+      }
+      .login-btn {
+        background: var(--blue-mid);
+        color: white;
+        padding: 10px 26px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        transition:
+          background 0.25s,
+          transform 0.25s;
+      }
+      .login-btn:hover {
+        background: var(--blue-dark);
+        transform: translateY(-2px);
+      }
+
+      /* ── BREADCRUMB ── */
+      .breadcrumb {
+        max-width: 1200px;
+        margin: 18px auto 0;
+        padding: 0 24px;
+        font-size: 0.82rem;
+        color: var(--gray-mid);
+      }
+      .breadcrumb a {
+        color: var(--blue-mid);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── BANNER ── */
+      .banner {
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 52px 20px 44px;
+        border-radius: 0;
+        background: linear-gradient(
+          140deg,
+          #002855 0%,
+          #003f7e 45%,
+          #0066b2 80%,
+          #00a0e3 100%
+        );
+      }
+
+      /* Dot pattern */
+      .banner-dots {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.07) 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+      }
+
+      /* Background shapes */
+      .bg-shapes {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .s1 {
+        width: 420px;
+        height: 420px;
+        top: -160px;
+        right: -60px;
+      }
+      .s2 {
+        width: 220px;
+        height: 220px;
+        top: 20px;
+        right: 180px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .s3 {
+        width: 320px;
+        height: 320px;
+        bottom: -140px;
+        left: -60px;
+        background: rgba(0, 0, 0, 0.06);
+      }
+
+      /* Illustration — floating social icons */
+      .illustration {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 46%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .icon-cluster {
+        position: relative;
+        width: 260px;
+        height: 260px;
+      }
+
+      /* Central figure */
+      .fig-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px;
+        height: 72px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+        z-index: 5;
+      }
+      .fig-center svg {
+        width: 38px;
+        height: 38px;
+        stroke: var(--blue-mid);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Orbiting icons */
+      .orbit-icon {
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      .orbit-icon svg {
+        width: 26px;
+        height: 26px;
+        stroke: white;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .oi-1 {
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: float1 4s ease-in-out infinite;
+      }
+      .oi-2 {
+        top: 40px;
+        right: 10px;
+        animation: float2 5s ease-in-out infinite;
+      }
+      .oi-3 {
+        bottom: 30px;
+        right: 20px;
+        animation: float1 4.5s ease-in-out infinite reverse;
+      }
+      .oi-4 {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: float2 3.8s ease-in-out infinite;
+      }
+      .oi-5 {
+        top: 40px;
+        left: 10px;
+        animation: float1 5.2s ease-in-out infinite reverse;
+      }
+
+      @keyframes float1 {
+        0%,
+        100% {
+          transform: translateY(0) translateX(-50%);
+        }
+        50% {
+          transform: translateY(-10px) translateX(-50%);
+        }
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Banner text */
+      .banner-text {
+        position: relative;
+        z-index: 10;
+        padding: 50px 52px;
+        max-width: 520px;
+        margin-left: max(24px, calc((100% - 1152px) / 2 + 24px));
+        animation: fadeInUp 0.7s both;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .banner-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--blue-light);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .banner-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 3px;
+        background: var(--blue-light);
+        border-radius: 2px;
+      }
+      .banner-title {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 800;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 14px;
+      }
+      .banner-subtitle {
+        font-size: 0.92rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.65;
+        max-width: 360px;
+      }
+
+      /* Presencial badge */
+      .presencial-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 50px;
+        letter-spacing: 0.3px;
+      }
+      .presencial-badge svg {
+        width: 14px;
+        height: 14px;
+        stroke: white;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ── TRAMITES GRID ── */
+      .section-label {
+        text-align: center;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray-mid);
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        margin: 48px 0 26px;
+      }
+
+      .tramites-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        max-width: 720px;
+        margin: 0 auto 64px;
+        padding: 0 24px;
+      }
+
+      .tramite-card {
+        background: white;
+        border-radius: 16px;
+        padding: 40px 28px 34px;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 4px 20px rgba(0, 63, 126, 0.08);
+        border: 2px solid transparent;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .tramite-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 44px rgba(0, 63, 126, 0.16);
+        border-color: var(--blue-mid);
+      }
+
+      .card-icon-wrap {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0, 102, 178, 0.28);
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .tramite-card:hover .card-icon-wrap {
+        transform: scale(1.08) rotate(-4deg);
+      }
+      .card-icon-wrap svg {
+        width: 40px;
+        height: 40px;
+        fill: none;
+        stroke: white;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .card-label {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--blue-dark);
+        line-height: 1.3;
+      }
+      .card-desc {
+        font-size: 0.83rem;
+        color: var(--gray-mid);
+        font-weight: 400;
+        line-height: 1.55;
+      }
+
+      .card-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--gray-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: #f0f4f8;
+        padding: 5px 12px;
+        border-radius: 50px;
+        margin-top: 4px;
+      }
+      .card-tag svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--gray-mid);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+
+      .card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--blue-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 4px;
+      }
+      .card-cta svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--blue-mid);
+        transition: transform 0.25s;
+        fill: none;
+      }
+      .tramite-card:hover .card-cta svg {
+        transform: translateX(4px);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        text-align: center;
+        padding: 24px 0 32px;
+      }
+      footer img {
+        max-width: min(660px, 90vw);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 700px) {
+        .tramites-grid {
+          grid-template-columns: 1fr;
+          max-width: 360px;
+        }
+        .banner {
+          margin: 16px;
+          border-radius: 14px;
+          min-height: auto;
+        }
+        .banner-text {
+          padding: 36px 28px;
+        }
+        .illustration {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header-top">
+      <div class="header-content">
+        <a href="https://santarosa.gob.ar"
+          ><img
+            src="https://www.santarosa.gob.ar/wp-content/uploads/2024/12/LOGO_HORIZONTAL_COLOR_SMALL.png.webp"
+            alt="Municipalidad de Santa Rosa"
+            class="logo"
+        /></a>
+        <a href="#" class="login-btn">Ingresar</a>
+      </div>
+    </header>
+
+    <!-- BANNER -->
+    <section class="banner">
+      <div class="bg-shapes">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+      </div>
+
+      <!-- Illustration -->
+      <div class="illustration">
+        <div class="icon-cluster">
+          <!-- Central: people/community -->
+          <div class="fig-center">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 00-3-3.87" />
+              <path d="M16 3.13a4 4 0 010 7.75" />
+            </svg>
+          </div>
+
+          <!-- Orbit: hand/aid -->
+          <div class="orbit-icon oi-1">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M18 11V6a2 2 0 00-4 0v3M14 9V4a2 2 0 00-4 0v5M10 9V3a2 2 0 00-4 0v6M6 9c0 3 1 5 3 7s3 4 3 5h4c0-1 1-3 3-5s3-4 3-7V9"
+              />
+            </svg>
+          </div>
+
+          <!-- Orbit: card/tarjeta -->
+          <div class="orbit-icon oi-2">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg>
+          </div>
+
+          <!-- Orbit: basket/food -->
+          <div class="orbit-icon oi-3">
+            <svg viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+          </div>
+
+          <!-- Orbit: home -->
+          <div class="orbit-icon oi-4">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+
+          <!-- Orbit: heart -->
+          <div class="orbit-icon oi-5">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="banner-text">
+        <div class="banner-eyebrow">Municipalidad de Santa Rosa</div>
+        <h1 class="banner-title">Gestión Social</h1>
+        <p class="banner-subtitle">
+          Accedé a los programas y beneficios sociales que la Municipalidad de
+          Santa Rosa ofrece a sus vecinos.
+        </p>
+        <div class="presencial-badge">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Trámites presenciales
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAMITES -->
+    <p class="section-label">Trámites disponibles</p>
+
+    <div class="tramites-grid">
+      <!-- Solicitud de elementos -->
+      <a href="./solicitud_elementos.html" class="tramite-card">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+        </div>
+        <span class="card-label">Solicitud de Elementos</span>
+        <span class="card-desc"
+          >Solicitá elementos de ayuda social ante la Dirección de Gestión
+          Social del municipio.</span
+        >
+        <span class="card-tag">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Presencial
+        </span>
+        <span class="card-cta">
+          Ver requisitos
+          <svg viewBox="0 0 24 24" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+
+      <!-- Solicitud de tarjeta alimentaria -->
+      <a href="./solicitud_tarjeta_alimentaria.html" class="tramite-card">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <line x1="2" y1="10" x2="22" y2="10" />
+            <line x1="6" y1="15" x2="10" y2="15" />
+          </svg>
+        </div>
+        <span class="card-label">Solicitud de Tarjeta Alimentaria</span>
+        <span class="card-desc"
+          >Accedé al programa de tarjeta alimentaria municipal para familias que
+          lo necesiten.</span
+        >
+        <span class="card-tag">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Presencial
+        </span>
+        <span class="card-cta">
+          Ver requisitos
+          <svg viewBox="0 0 24 24" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <img
+        src="https://consultadeuda.santarosa.gob.ar/footer_muni-%20capital.svg"
+        alt="Municipalidad de Santa Rosa"
+      />
+    </footer>
+  </body>
+</html>

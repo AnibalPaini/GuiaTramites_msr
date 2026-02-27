@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baja de Actividad | Municipalidad de Santa Rosa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@200;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f0f4f8;
+      }
+
+      .header-top {
+        background: white;
+        padding: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .logo {
+        height: 50px;
+        width: auto;
+      }
+      .login-btn {
+        background: #0066b2;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: 0.3s;
+      }
+      .login-btn:hover {
+        background: #003f7e;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 102, 178, 0.3);
+      }
+
+      /* HERO */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #003f7e 0%,
+          #0066b2 60%,
+          #00a0e3 100%
+        );
+        padding: 52px 20px 44px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        border: 50px solid rgba(255, 255, 255, 0.06);
+        top: -180px;
+        right: -80px;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        border: 36px solid rgba(255, 255, 255, 0.05);
+        bottom: -160px;
+        left: -60px;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-icon {
+        width: 76px;
+        height: 76px;
+        background: white;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+      }
+      .hero-icon svg {
+        width: 40px;
+        height: 40px;
+        stroke: #0066b2;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .hero h1 {
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+        font-weight: 800;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        margin-bottom: 10px;
+      }
+      .hero-subtitle {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.95rem;
+        font-weight: 300;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.65;
+      }
+      .presencial-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        font-size: 0.76rem;
+        font-weight: 600;
+        padding: 7px 15px;
+        border-radius: 50px;
+        letter-spacing: 0.3px;
+      }
+      .presencial-badge svg {
+        width: 13px;
+        height: 13px;
+        stroke: white;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+
+      /* CONTAINER */
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 46px 20px 64px;
+      }
+      .breadcrumb {
+        font-size: 0.86em;
+        margin-bottom: 30px;
+        color: #626366;
+      }
+      .breadcrumb a {
+        color: #0066b2;
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        text-decoration: underline;
+      }
+
+      .intro {
+        font-size: 1.05em;
+        color: #2d3748;
+        margin-bottom: 32px;
+        line-height: 1.8;
+        font-weight: 500;
+        background: white;
+        padding: 22px 26px;
+        border-radius: 12px;
+        border-top: 5px solid #0066b2;
+        box-shadow: 0 2px 12px rgba(0, 63, 126, 0.07);
+      }
+
+      /* CARDS */
+      .content-card {
+        background: white;
+        border-radius: 12px;
+        padding: 32px 34px;
+        margin-bottom: 22px;
+        box-shadow: 0 2px 12px rgba(0, 63, 126, 0.07);
+      }
+      .section-title {
+        font-size: 1.25em;
+        font-weight: 700;
+        color: #003f7e;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .title-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .title-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: white;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .icon-blue {
+        background: #0066b2;
+      }
+      .icon-teal {
+        background: #00a0e3;
+      }
+      .icon-green {
+        background: #27ae60;
+      }
+      .icon-pink {
+        background: #ec0e6b;
+      }
+      .icon-orange {
+        background: #e67e22;
+      }
+
+      /* DOC LIST */
+      .doc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .doc-list li {
+        padding: 13px 18px 13px 50px;
+        background: #f7fafc;
+        border-radius: 8px;
+        border-left: 4px solid #00a0e3;
+        position: relative;
+        font-size: 0.93rem;
+        line-height: 1.5;
+        color: #2d3748;
+      }
+      .doc-list li::before {
+        content: "";
+        position: absolute;
+        left: 17px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 17px;
+        height: 17px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230066b2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E")
+          center/contain no-repeat;
+      }
+      .doc-list li.conditional {
+        border-left-color: #ec0e6b;
+        background: #fff5f8;
+      }
+      .doc-list li.conditional::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ec0e6b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+      }
+      .doc-list li.conditional .cond-label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #ec0e6b;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        margin-bottom: 3px;
+      }
+
+      /* INFO BLOCK */
+      .info-block {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .info-row {
+        display: flex;
+        align-items: flex-start;
+        padding: 13px 16px;
+        background: #f7fafc;
+        border-radius: 10px;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: #2d3748;
+      }
+      .info-row svg {
+        width: 20px;
+        height: 20px;
+        stroke: #0066b2;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+        margin-top: 1px;
+        margin-right: 10px;
+      }
+      .info-row a {
+        color: #0066b2;
+        text-decoration: none;
+        font-weight: 600;
+        margin-right: 5px;
+      }
+      .info-row a:hover {
+        text-decoration: underline;
+      }
+
+      /* NOTA */
+      .nota-box {
+        background: #e8f4fd;
+        border-left: 5px solid #0066b2;
+        border-radius: 0 8px 8px 0;
+        padding: 18px 22px;
+        margin-top: 0;
+        font-size: 0.92rem;
+        line-height: 1.65;
+        color: #2d3748;
+      }
+      .nota-box strong {
+        display: block;
+        color: #0066b2;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.4px;
+        margin-bottom: 6px;
+      }
+
+      /* TABLA DE ARANCELES */
+      .fee-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.93rem;
+        margin-bottom: 18px;
+      }
+      .fee-table thead tr {
+        background: #003f7e;
+        color: white;
+      }
+      .fee-table thead th {
+        padding: 12px 18px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .fee-table thead th:last-child {
+        text-align: right;
+      }
+      .fee-table tbody tr {
+        border-bottom: 1px solid #e8eef4;
+      }
+      .fee-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .fee-table tbody tr:nth-child(even) {
+        background: #f7fafc;
+      }
+      .fee-table tbody td {
+        padding: 13px 18px;
+        color: #2d3748;
+      }
+      .fee-table tbody td:last-child {
+        text-align: right;
+        font-weight: 700;
+        color: #003f7e;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        text-align: center;
+        padding: 24px 0 32px;
+      }
+      footer img {
+        max-width: min(660px, 90vw);
+      }
+
+      @media (max-width: 600px) {
+        .content-card {
+          padding: 22px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header-top">
+      <div class="header-content">
+        <a href="https://santarosa.gob.ar"
+          ><img
+            src="https://www.santarosa.gob.ar/wp-content/uploads/2024/12/LOGO_HORIZONTAL_COLOR_SMALL.png.webp"
+            alt="Municipalidad de Santa Rosa"
+            class="logo"
+        /></a>
+        <a href="#" class="login-btn">Ingresar</a>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            <path d="M9 22V12h6v10" />
+            <line x1="12" y1="2" x2="12" y2="2" />
+            <line x1="5" y1="9" x2="19" y2="9" stroke-dasharray="2 2" />
+          </svg>
+        </div>
+        <h1>Baja de Actividad</h1>
+        <p class="hero-subtitle">
+          Solicitá la baja comercial de tu actividad ante la Dirección de
+          Comercio y Servicios de la Municipalidad de Santa Rosa.
+        </p>
+        <div class="presencial-badge">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Trámite presencial
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="comercio.html">Comercio y Servicios</a> &rsaquo; Baja de
+        Actividad
+      </p>
+
+      <div class="intro">
+        Trámite presencial para solicitar la <strong>baja comercial</strong> de
+        una actividad ante la Municipalidad de Santa Rosa. En caso de existir
+        apoderado, deberá adjuntar poder de representación y DNI de la misma.
+      </div>
+
+      <!-- DOCUMENTACIÓN REQUERIDA -->
+      <div class="content-card">
+        <h2 class="section-title">
+          <span class="title-icon icon-green">
+            <svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          Documentación Requerida
+        </h2>
+        <ul class="doc-list">
+          <li>DNI</li>
+          <li>
+            Certificado libre deuda, Tasa por Seguridad e Higiene — lo solicita
+            en la Dirección de Comercio y Servicios
+          </li>
+          <li>
+            Certificado libre deuda, Juzgado Municipal de Faltas — lo solicita
+            la Dirección de Comercio y Servicios. En caso de poseer deuda,
+            dirigirse al Juzgado de Faltas (Chile N° 702)
+          </li>
+          <li>
+            Solicitud de baja comercial — debe ser firmada por el titular al
+            momento de presentarse con el DNI y los certificados solicitados
+          </li>
+          <li class="conditional">
+            <span class="cond-label">Solo en caso de fallecimiento</span>
+            Acta de defunción del titular
+          </li>
+        </ul>
+      </div>
+
+      <!-- ARANCELES -->
+      <div class="content-card">
+        <h2 class="section-title">
+          <span class="title-icon icon-orange">
+            <svg viewBox="0 0 24 24">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+            </svg>
+          </span>
+          Deberá Abonar
+        </h2>
+
+        <table class="fee-table">
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th>Monto ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Derechos de oficina</td>
+              <td>$140</td>
+            </tr>
+            <tr>
+              <td>Certificado Libre Deuda</td>
+              <td>$474,60</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="nota-box">
+          <strong>Dónde abonar</strong>
+          Las liquidaciones deberán ser abonadas en las cajas de la
+          Municipalidad de Santa Rosa.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <img
+        src="https://consultadeuda.santarosa.gob.ar/footer_muni-%20capital.svg"
+        alt="Municipalidad de Santa Rosa"
+      />
+    </footer>
+  </body>
+</html>

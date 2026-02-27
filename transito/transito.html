@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trámites de Tránsito – Municipalidad de Santa Rosa</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --blue-dark: #003f7e;
+        --blue-mid: #0066b2;
+        --blue-light: #00a0e3;
+        --pink: #ec0e6b;
+        --gray-dark: #231f20;
+        --gray-mid: #626366;
+        --gray-light: #b5b7b9;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #f4f6f9;
+        color: var(--gray-dark);
+      }
+
+      /* ── HEADER ── */
+      .header-top {
+        background: white;
+        padding: 14px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        height: 48px;
+        width: auto;
+      }
+      .login-btn {
+        background: var(--blue-mid);
+        color: white;
+        padding: 10px 26px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        transition:
+          background 0.25s,
+          transform 0.25s;
+      }
+      .login-btn:hover {
+        background: var(--blue-dark);
+        transform: translateY(-2px);
+      }
+
+      /* ── BREADCRUMB ── */
+      .breadcrumb {
+        max-width: 1200px;
+        margin: 18px auto 0;
+        padding: 0 24px;
+        font-size: 0.82rem;
+        color: var(--gray-mid);
+      }
+      .breadcrumb a {
+        color: var(--blue-mid);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── BANNER ── */
+      .banner {
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 60px 20px;
+        background: linear-gradient(
+          140deg,
+          #002855 0%,
+          #003f7e 40%,
+          #0066b2 75%,
+          #00a0e3 100%
+        );
+      }
+
+      /* Subtle grid overlay */
+      .banner-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+
+      /* ── TEXT SIDE ── */
+      .banner-text {
+        position: relative;
+        z-index: 10;
+        padding: 50px 52px;
+        max-width: 520px;
+        margin-left: max(24px, calc((100% - 1152px) / 2 + 24px));
+        animation: fadeInUp 0.7s both;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .banner-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--blue-light);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .banner-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 3px;
+        background: var(--blue-light);
+        border-radius: 2px;
+      }
+      .banner-title {
+        font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+        font-weight: 800;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 14px;
+      }
+      .banner-subtitle {
+        font-size: 0.93rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.65;
+        max-width: 360px;
+      }
+
+      /* ── ILLUSTRATION ── */
+      .illustration {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 52%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .scene {
+        position: relative;
+        width: 380px;
+        height: 260px;
+      }
+
+      /* Roads (top-down map) */
+      .road-h {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .road-v {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      /* Road center dashes */
+      .road-dash {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(240, 192, 64, 0.7);
+        animation: dashPulse 1.4s ease-in-out infinite;
+      }
+      .rd1 {
+        width: 28px;
+        left: 10px;
+        animation-delay: 0s;
+      }
+      .rd2 {
+        width: 28px;
+        left: 90px;
+        animation-delay: -0.5s;
+      }
+      .rd3 {
+        width: 28px;
+        left: 230px;
+        animation-delay: -0.3s;
+      }
+      .rd4 {
+        width: 28px;
+        left: 330px;
+        animation-delay: -0.8s;
+      }
+      @keyframes dashPulse {
+        0%,
+        100% {
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      /* City blocks */
+      .map-block {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+      }
+      .mb1 {
+        width: 90px;
+        height: 56px;
+        top: 16px;
+        left: 20px;
+      }
+      .mb2 {
+        width: 60px;
+        height: 56px;
+        top: 16px;
+        left: 124px;
+      }
+      .mb3 {
+        width: 110px;
+        height: 56px;
+        top: 16px;
+        right: 20px;
+      }
+      .mb4 {
+        width: 90px;
+        height: 60px;
+        bottom: 16px;
+        left: 20px;
+      }
+      .mb5 {
+        width: 60px;
+        height: 60px;
+        bottom: 16px;
+        left: 124px;
+      }
+      .mb6 {
+        width: 110px;
+        height: 60px;
+        bottom: 16px;
+        right: 20px;
+      }
+
+      /* Top-down car */
+      .topdown-car {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: carPulse 3s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      }
+      @keyframes carPulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -54%) scale(1.05);
+        }
+      }
+
+      /* Traffic light */
+      .tl {
+        position: absolute;
+        right: 52px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: tlFade 0.8s 0.4s both;
+      }
+      @keyframes tlFade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .tl-box {
+        background: #111827;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 8px 7px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      }
+      .tl-bulb {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+      }
+      .tl-r {
+        background: #ef4444;
+        box-shadow: 0 0 10px 3px rgba(239, 68, 68, 0.5);
+      }
+      .tl-y {
+        background: #1f2937;
+      }
+      .tl-g {
+        background: #1f2937;
+      }
+      .tl-pole {
+        width: 4px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+      }
+
+      /* Floating label cards */
+      .float-card {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(6px);
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        border-radius: 14px;
+        padding: 9px 13px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        white-space: nowrap;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+      }
+      .float-card svg {
+        width: 20px;
+        height: 20px;
+        stroke: white;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      .float-card span {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .fc-license {
+        top: -16px;
+        left: 24px;
+        animation: bob 4s ease-in-out infinite;
+      }
+      .fc-parking {
+        top: -16px;
+        right: 24px;
+        animation: bob 5s ease-in-out infinite reverse;
+      }
+      .fc-tow {
+        bottom: -16px;
+        left: 54px;
+        animation: bob 4.5s ease-in-out infinite 0.5s;
+      }
+
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
+      }
+
+      /* ── TRAMITES GRID ── */
+      .section-title {
+        text-align: center;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--gray-mid);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 48px 0 28px;
+      }
+
+      .tramites-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        max-width: 900px;
+        margin: 0 auto 60px;
+        padding: 0 24px;
+      }
+
+      .tramite-card {
+        background: white;
+        border-radius: 16px;
+        padding: 36px 24px 32px;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 4px 20px rgba(0, 63, 126, 0.08);
+        border: 2px solid transparent;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .tramite-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 40px rgba(0, 63, 126, 0.18);
+        border-color: var(--blue-mid);
+      }
+      .card-icon-wrap {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 6px 20px rgba(0, 102, 178, 0.3);
+        transition: transform 0.3s;
+      }
+      .tramite-card:hover .card-icon-wrap {
+        transform: scale(1.1) rotate(-4deg);
+      }
+      .card-icon-wrap svg {
+        width: 38px;
+        height: 38px;
+        fill: none;
+        stroke: white;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .card-label {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--blue-dark);
+        line-height: 1.3;
+      }
+      .card-desc {
+        font-size: 0.82rem;
+        color: var(--gray-mid);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+      .card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--blue-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: auto;
+      }
+      .card-cta svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--blue-mid);
+        fill: none;
+        transition: transform 0.25s;
+      }
+      .tramite-card:hover .card-cta svg {
+        transform: translateX(4px);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        text-align: center;
+        padding: 24px 0 32px;
+      }
+      footer img {
+        max-width: min(660px, 90vw);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 860px) {
+        .tramites-grid {
+          grid-template-columns: 1fr 1fr;
+          max-width: 600px;
+        }
+      }
+      @media (max-width: 760px) {
+        .tramites-grid {
+          grid-template-columns: 1fr;
+          max-width: 380px;
+        }
+        .banner {
+          margin: 16px;
+          border-radius: 14px;
+          min-height: auto;
+        }
+        .banner-text {
+          padding: 36px 28px;
+        }
+        .illustration {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header-top">
+      <div class="header-content">
+        <a href="https://santarosa.gob.ar"><img
+          src="https://www.santarosa.gob.ar/wp-content/uploads/2024/12/LOGO_HORIZONTAL_COLOR_SMALL.png.webp"
+          alt="Municipalidad de Santa Rosa"
+          class="logo"
+        /></a>
+        <a href="#" class="login-btn">Ingresar</a>
+      </div>
+    </header>
+
+    <!-- BANNER -->
+    <section class="banner">
+      <div class="banner-grid"></div>
+
+      <!-- Illustration: top-down city map + floating tramite cards -->
+      <div class="illustration">
+        <div class="scene">
+          <div class="road-h"></div>
+          <div class="road-v"></div>
+          <div class="road-dash rd1"></div>
+          <div class="road-dash rd2"></div>
+          <div class="road-dash rd3"></div>
+          <div class="road-dash rd4"></div>
+
+          <div class="map-block mb1"></div>
+          <div class="map-block mb2"></div>
+          <div class="map-block mb3"></div>
+          <div class="map-block mb4"></div>
+          <div class="map-block mb5"></div>
+          <div class="map-block mb6"></div>
+
+          <!-- Top-down car SVG -->
+          <div class="topdown-car">
+            <svg
+              width="30"
+              height="50"
+              viewBox="0 0 30 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="3" y="8" width="24" height="34" rx="5" fill="#00A0E3" />
+              <rect
+                x="6"
+                y="10"
+                width="18"
+                height="9"
+                rx="3"
+                fill="rgba(255,255,255,0.35)"
+              />
+              <rect
+                x="6"
+                y="31"
+                width="18"
+                height="8"
+                rx="2"
+                fill="rgba(255,255,255,0.2)"
+              />
+              <rect x="0" y="10" width="5" height="10" rx="2" fill="#002855" />
+              <rect x="25" y="10" width="5" height="10" rx="2" fill="#002855" />
+              <rect x="0" y="30" width="5" height="10" rx="2" fill="#002855" />
+              <rect x="25" y="30" width="5" height="10" rx="2" fill="#002855" />
+              <line
+                x1="15"
+                y1="21"
+                x2="15"
+                y2="29"
+                stroke="rgba(255,255,255,0.4)"
+                stroke-width="1.5"
+                stroke-dasharray="2 2"
+              />
+            </svg>
+          </div>
+
+          <!-- Traffic light -->
+          <div class="tl">
+            <div class="tl-box">
+              <div class="tl-bulb tl-r"></div>
+              <div class="tl-bulb tl-y"></div>
+              <div class="tl-bulb tl-g"></div>
+            </div>
+            <div class="tl-pole"></div>
+          </div>
+
+          <!-- Floating label cards -->
+          <div class="float-card fc-license">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <circle cx="8" cy="12" r="3" />
+              <line x1="13" y1="9" x2="20" y2="9" />
+              <line x1="13" y1="12" x2="18" y2="12" />
+            </svg>
+            <span>Licencia</span>
+          </div>
+
+          <div class="float-card fc-parking">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M9 17V7h4a3 3 0 010 6H9" />
+            </svg>
+            <span>Estacionamiento</span>
+          </div>
+
+          <div class="float-card fc-tow">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 12a8 8 0 0116 0" />
+              <path d="M4 12l2-2M4 12l2 2" />
+              <rect x="5" y="14" width="14" height="6" rx="1.5" />
+            </svg>
+            <span>Restitución</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="banner-text">
+        <div class="banner-eyebrow">Municipalidad de Santa Rosa</div>
+        <h1 class="banner-title">Tránsito</h1>
+        <p class="banner-subtitle">
+          Guía de trámites de tránsito de la ciudad.
+        </p>
+      </div>
+    </section>
+
+    <!-- TRAMITES -->
+    <p class="section-title">Trámites disponibles</p>
+
+    <div class="tramites-grid">
+      <a href="https://transitodigital.santarosa.gob.ar/" class="tramite-card">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="6" width="18" height="13" rx="2" />
+            <path d="M16 6V4a1 1 0 00-1-1H9a1 1 0 00-1 1v2" />
+            <line x1="12" y1="11" x2="12" y2="15" />
+            <line x1="10" y1="13" x2="14" y2="13" />
+            <circle cx="18" cy="5" r="3" fill="#EC0E6B" stroke="none" />
+            <line
+              x1="17"
+              y1="5"
+              x2="19"
+              y2="5"
+              stroke="white"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+        <span class="card-label">Eximición de Estacionamiento Medido</span>
+        <span class="card-desc"
+          >Solicitá la exención de estacionamiento tarifado para vehículos
+          habilitados.</span
+        >
+        <span class="card-cta">
+          Iniciar trámite
+          <svg viewBox="0 0 24 24" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+
+      <a
+        href="https://www.santarosa.gob.ar/licencia-de-conducir-online/"
+        class="tramite-card"
+      >
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <circle cx="8" cy="12" r="3" />
+            <line x1="13" y1="9" x2="20" y2="9" />
+            <line x1="13" y1="12" x2="18" y2="12" />
+            <line x1="13" y1="15" x2="16" y2="15" />
+          </svg>
+        </div>
+        <span class="card-label">Licencia de Conducir Online</span>
+        <span class="card-desc"
+          >Gestioná el turno y la documentación para obtener o renovar tu
+          licencia.</span
+        >
+        <span class="card-cta">
+          Iniciar trámite
+          <svg viewBox="0 0 24 24" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="./restitucion_vehicular.html" class="tramite-card">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 12a8 8 0 0116 0" />
+            <path d="M4 12l2-2M4 12l2 2" />
+            <rect x="5" y="14" width="14" height="7" rx="1.5" />
+            <path d="M8 14v-2h8v2" />
+            <circle cx="8" cy="21" r="1.5" fill="white" stroke="white" />
+            <circle cx="16" cy="21" r="1.5" fill="white" stroke="white" />
+          </svg>
+        </div>
+        <span class="card-label">Restitución Vehicular</span>
+        <span class="card-desc"
+          >Iniciá el proceso para la restitución de vehículos remitidos al
+          corralón municipal.</span
+        >
+        <span class="card-cta">
+          Ver requisitos
+          <svg viewBox="0 0 24 24" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <img
+        src="https://consultadeuda.santarosa.gob.ar/footer_muni-%20capital.svg"
+        alt="Municipalidad de Santa Rosa"
+      />
+    </footer>
+  </body>
+</html>
