@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baja de Actividad | Municipalidad de Santa Rosa</title>
+    <title>Cambio de Domicilio | Municipalidad de Santa Rosa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,6 +22,11 @@
         line-height: 1.6;
         color: #333;
         background: #f0f4f8;
+      }
+
+      .link{
+        color: #0066b2;
+        text-decoration: none;
       }
 
       .header-top {
@@ -227,20 +232,48 @@
         stroke-linecap: round;
         stroke-linejoin: round;
       }
-      .icon-blue {
+      .icon-blue   { background: #0066b2; }
+      .icon-teal   { background: #00a0e3; }
+      .icon-green  { background: #27ae60; }
+      .icon-pink   { background: #ec0e6b; }
+      .icon-orange { background: #e67e22; }
+
+      /* STEPS LIST */
+      .steps-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .steps-list li {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        font-size: 0.93rem;
+        line-height: 1.6;
+        color: #2d3748;
+      }
+      .step-num {
+        min-width: 30px;
+        height: 30px;
+        border-radius: 50%;
         background: #0066b2;
+        color: white;
+        font-size: 0.78rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
       }
-      .icon-teal {
-        background: #00a0e3;
+      .steps-list li a {
+        color: #0066b2;
+        text-decoration: none;
+        font-weight: 600;
       }
-      .icon-green {
-        background: #27ae60;
-      }
-      .icon-pink {
-        background: #ec0e6b;
-      }
-      .icon-orange {
-        background: #e67e22;
+      .steps-list li a:hover {
+        text-decoration: underline;
       }
 
       /* DOC LIST */
@@ -287,6 +320,24 @@
         letter-spacing: 0.4px;
         margin-bottom: 3px;
       }
+      .doc-list li a {
+        color: #0066b2;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .doc-list li a:hover {
+        text-decoration: underline;
+      }
+
+      /* SUBSECTION */
+      .subsection-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #003f7e;
+        margin: 26px 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e2ecf6;
+      }
 
       /* INFO BLOCK */
       .info-block {
@@ -322,9 +373,7 @@
         font-weight: 600;
         margin-right: 5px;
       }
-      .info-row a:hover {
-        text-decoration: underline;
-      }
+      .info-row a:hover { text-decoration: underline; }
 
       /* NOTA */
       .nota-box {
@@ -366,18 +415,12 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
-      .fee-table thead th:last-child {
-        text-align: right;
-      }
+      .fee-table thead th:last-child { text-align: right; }
       .fee-table tbody tr {
         border-bottom: 1px solid #e8eef4;
       }
-      .fee-table tbody tr:last-child {
-        border-bottom: none;
-      }
-      .fee-table tbody tr:nth-child(even) {
-        background: #f7fafc;
-      }
+      .fee-table tbody tr:last-child { border-bottom: none; }
+      .fee-table tbody tr:nth-child(even) { background: #f7fafc; }
       .fee-table tbody td {
         padding: 13px 18px;
         color: #2d3748;
@@ -386,6 +429,11 @@
         text-align: right;
         font-weight: 700;
         color: #003f7e;
+      }
+      .fee-table .note-cell {
+        font-size: 0.78rem;
+        color: #626366;
+        font-weight: 400;
       }
 
       /* ── FOOTER ── */
@@ -398,9 +446,7 @@
       }
 
       @media (max-width: 600px) {
-        .content-card {
-          padding: 22px 18px;
-        }
+        .content-card { padding: 22px 18px; }
       }
     </style>
   </head>
@@ -422,15 +468,13 @@
         <div class="hero-icon">
           <svg viewBox="0 0 24 24">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-            <path d="M9 22V12h6v10" />
-            <line x1="12" y1="2" x2="12" y2="2" />
-            <line x1="5" y1="9" x2="19" y2="9" stroke-dasharray="2 2" />
+            <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
         </div>
-        <h1>Baja de Actividad</h1>
+        <h1>Cambio de Domicilio</h1>
         <p class="hero-subtitle">
-          Solicitá la baja comercial de tu actividad ante la Dirección de
-          Comercio y Servicios de la Municipalidad de Santa Rosa.
+          Solicitá el cambio de domicilio de tu actividad comercial ante la
+          Dirección de Comercio y Servicios de la Municipalidad de Santa Rosa.
         </p>
         <div class="presencial-badge">
           <svg viewBox="0 0 24 24">
@@ -444,17 +488,70 @@
 
     <div class="container">
       <p class="breadcrumb">
-        <a href="./comercio.html">Comercio y Servicios</a> &rsaquo; Baja de
-        Actividad
+        <a href="./comercio.html">Comercio y Servicios</a> &rsaquo; Cambio de
+        Domicilio
       </p>
 
       <div class="intro">
-        Trámite presencial para solicitar la <strong>baja comercial</strong> de
-        una actividad ante la Municipalidad de Santa Rosa. En caso de existir
-        apoderado, deberá adjuntar poder de representación y DNI de la misma.
+        Seguí los pasos a continuación para gestionar el <strong>cambio de domicilio</strong>
+        de tu actividad comercial. Una vez obtenidos los certificados previos, deberás
+        solicitar un <a class="link" href="https://www.santarosa.gob.ar/turnos-online/">turno web</a> y presentar la documentación en la
+        <strong>Dirección de Comercio y Servicios</strong> (Bartolomé Mitre 62).
       </div>
 
-      <!-- DOCUMENTACIÓN REQUERIDA -->
+      <!-- PASOS -->
+      <div class="content-card">
+        <h2 class="section-title">
+          <span class="title-icon icon-blue">
+            <svg viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </span>
+          Pasos a Seguir
+        </h2>
+        <ol class="steps-list">
+          <li>
+            <span class="step-num">1</span>
+            <span>
+              Descargar la planilla denominada <strong>"Certificado Autorización de Uso del Suelo y Aptitud Técnica"</strong>,
+              o bien solicitarla por mail a:
+              <a href="mailto:dir.planeamientourbano@santarosa.gob.ar">dir.planeamientourbano@santarosa.gob.ar</a>
+            </span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span>
+              Presentar la planilla con todos los datos completados en
+              <strong>Mesa de Entradas Generales (San Martín 50)</strong>, previo pago del sellado
+              correspondiente. Junto con la planilla entregar un plano municipal conforme a obra
+              — pueden ser fotocopias por partes, pero debe constar el plano completo incluyendo la carátula.
+            </span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>
+              Las actividades de <strong>elaboración y venta de alimentos</strong> deberán completar de
+              manera presencial la planilla de pre-consulta bromatológica. Agentes de la Subdirección de
+              Sanidad y Control de Actividades Económicas se comunicarán vía correo electrónico para
+              acordar la inspección.
+            </span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span>
+              Poseer <strong>Libreta Sanitaria Actualizada</strong> o tramitarla ingresando a
+              <a href="./curso_manipulacion_alimentos.html">libreta sanitaria</a>
+            </span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- DOCUMENTACIÓN ADICIONAL -->
       <div class="content-card">
         <h2 class="section-title">
           <span class="title-icon icon-green">
@@ -462,26 +559,64 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </span>
-          Documentación Requerida
+          Documentación Adicional
         </h2>
+        <p style="font-size:0.88rem; color:#626366; margin-bottom:16px; line-height:1.6;">
+          Luego de obtener el apto bromatológico, solicitá un <a class="link" href="https://www.santarosa.gob.ar/turnos-online/">turno web</a> y presentá la
+          siguiente documentación en la <strong style="color:#003f7e;">Dirección de Comercio y Servicios</strong>
+          — Bartolomé Mitre 62.
+        </p>
         <ul class="doc-list">
-          <li>DNI</li>
           <li>
-            Certificado libre deuda, Tasa por Seguridad e Higiene — lo solicita
-            en la Dirección de Comercio y Servicios
+            Certificado libre deuda del Juzgado Municipal de Faltas — lo solicita la Dirección de
+            Comercio y Servicios. En caso de poseer deuda, dirigirse al Juzgado de Faltas (Chile 702)
           </li>
           <li>
-            Certificado libre deuda, Juzgado Municipal de Faltas — lo solicita
-            la Dirección de Comercio y Servicios. En caso de poseer deuda,
-            dirigirse al Juzgado de Faltas (Chile N° 702)
+            Certificado libre deuda de Tasa por Seguridad e Higiene — lo solicita la Dirección de
+            Comercio y Servicios. En caso de poseer deuda, dirigirse a la Dirección de Rentas (Alsina N° 120)
           </li>
           <li>
-            Solicitud de baja comercial — debe ser firmada por el titular al
-            momento de presentarse con el DNI y los certificados solicitados
+            Constancia actualizada de inscripción en Ingresos Brutos y constancia actualizada de AFIP
+            — lo solicita la Dirección de Comercio y Servicios
           </li>
           <li class="conditional">
-            <span class="cond-label">Solo en caso de fallecimiento</span>
-            Acta de defunción del titular
+            <span class="cond-label">Representantes de firma comercial</span>
+            Copia del Poder de Representación y fotocopia de D.N.I. (fotocopias certificadas)
+          </li>
+          <li>
+            Certificado actualizado de la sociedad y sus modificatorias, otorgado por la Dirección de
+            Superintendencia de Personas Jurídicas y Registro Público de Comercio (San Martín Oeste 32).
+            Tel: 387360 / 414190
+          </li>
+          <li>
+            Contrato de locación intervenido por la DGR, con firma certificada de locador y locatario
+            por policía o escribano
+          </li>
+        </ul>
+
+        <!-- Establecimiento comercial -->
+        <p class="subsection-title">Establecimiento Comercial: Documentación Requerida</p>
+        <ul class="doc-list">
+          <li>Declaración Jurada de los carteles publicitarios a utilizar</li>
+          <li class="conditional">
+            <span class="cond-label">Dueños</span>
+            Título que acredite la legítima ocupación del inmueble (Escritura)
+          </li>
+          <li class="conditional">
+            <span class="cond-label">Locales alquilados</span>
+            Fotocopia certificada del Contrato de Locación intervenido por D.G.R.
+            (<a href="mailto:sellosyotrosdgr@lapampa.gob.ar">sellosyotrosdgr@lapampa.gob.ar</a>)
+            — el domicilio deberá coincidir con el plano presentado — con firmas certificadas de
+            locador y locatario (ante Policía o Escribano)
+          </li>
+          <li class="conditional">
+            <span class="cond-label">Sin contrato de locación</span>
+            Nota de Cesión de Uso con firmas certificadas del cedente y cesionario, y/o
+            Contrato de Comodato con firmas certificadas (ante Policía o Escribano)
+          </li>
+          <li class="conditional">
+            <span class="cond-label">Viviendas del I.P.A.V.</span>
+            Autorización de uso comercial de la vivienda IPAV (Av. Argentino Valle 655). Tel: 424513
           </li>
         </ul>
       </div>
@@ -507,12 +642,23 @@
           </thead>
           <tbody>
             <tr>
-              <td>Derechos de oficina</td>
-              <td>$140</td>
+              <td>
+                Tasa por servicio de habilitación
+                <br /><span class="note-cell">Según Actividad — Art. 54*</span>
+              </td>
+              <td>Según Actividad</td>
             </tr>
             <tr>
               <td>Certificado Libre Deuda</td>
               <td>$474,60</td>
+            </tr>
+            <tr>
+              <td>Derechos de oficina</td>
+              <td>$140</td>
+            </tr>
+            <tr>
+              <td>Por foja</td>
+              <td>$42</td>
             </tr>
           </tbody>
         </table>
