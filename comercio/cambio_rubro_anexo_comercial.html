@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baja de Actividad | Municipalidad de Santa Rosa</title>
+    <title>Cambio de Rubro o Anexo | Municipalidad de Santa Rosa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,6 +22,12 @@
         line-height: 1.6;
         color: #333;
         background: #f0f4f8;
+      }
+
+      .link {
+        color: #0066b2;
+        text-decoration: none;
+        font-weight: 600;
       }
 
       .header-top {
@@ -226,6 +232,46 @@
         background: #e67e22;
       }
 
+      /* STEPS LIST */
+      .steps-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .steps-list li {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        font-size: 0.93rem;
+        line-height: 1.6;
+        color: #2d3748;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .step-num {
+        min-width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #0066b2;
+        color: white;
+        font-size: 0.78rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .steps-list li a {
+        color: #0066b2;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .steps-list li a:hover {
+        text-decoration: underline;
+      }
+
       /* DOC LIST */
       .doc-list {
         list-style: none;
@@ -242,6 +288,7 @@
         font-size: 0.93rem;
         line-height: 1.5;
         color: #2d3748;
+        overflow-wrap: break-word;
       }
       .doc-list li::before {
         content: "";
@@ -269,6 +316,24 @@
         text-transform: uppercase;
         letter-spacing: 0.4px;
         margin-bottom: 3px;
+      }
+      .doc-list li a {
+        color: #0066b2;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .doc-list li a:hover {
+        text-decoration: underline;
+      }
+
+      /* SUBSECTION */
+      .subsection-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #003f7e;
+        margin: 26px 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e2ecf6;
       }
 
       /* INFO BLOCK */
@@ -370,6 +435,11 @@
         font-weight: 700;
         color: #003f7e;
       }
+      .fee-table .note-cell {
+        font-size: 0.78rem;
+        color: #626366;
+        font-weight: 400;
+      }
 
       /* ── FOOTER ── */
       footer {
@@ -390,12 +460,13 @@
   <body>
     <header class="header-top">
       <div class="header-content">
-        <a href="https://santarosa.gob.ar"
-          ><img
+        <a href="https://santarosa.gob.ar">
+          <img
             src="https://www.santarosa.gob.ar/wp-content/uploads/2024/12/LOGO_HORIZONTAL_COLOR_SMALL.png.webp"
             alt="Municipalidad de Santa Rosa"
             class="logo"
-        /></a>
+          />
+        </a>
       </div>
     </header>
 
@@ -403,16 +474,15 @@
       <div class="hero-inner">
         <div class="hero-icon">
           <svg viewBox="0 0 24 24">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-            <path d="M9 22V12h6v10" />
-            <line x1="12" y1="2" x2="12" y2="2" />
-            <line x1="5" y1="9" x2="19" y2="9" stroke-dasharray="2 2" />
+            <path d="M3 3h18v4H3z" />
+            <path d="M3 7l9 6 9-6" />
+            <path d="M3 11v10h18V11" />
           </svg>
         </div>
-        <h1>Baja de Actividad</h1>
+        <h1>Cambio de Rubro o Anexo de Actividad Comercial</h1>
         <p class="hero-subtitle">
-          Solicitá la baja comercial de tu actividad ante la Dirección de
-          Comercio y Servicios de la Municipalidad de Santa Rosa.
+          Gestioná la modificación del rubro o la incorporación de una nueva
+          actividad comercial ante la Dirección de Comercio y Servicios.
         </p>
         <div class="presencial-badge">
           <svg viewBox="0 0 24 24">
@@ -426,17 +496,93 @@
 
     <div class="container">
       <p class="breadcrumb">
-        <a href="./comercio.html">Comercio y Servicios</a> &rsaquo; Baja de
-        Actividad
+        <a href="./comercio.html">Comercio y Servicios</a> &rsaquo; Cambio de
+        Rubro o Anexo
       </p>
 
       <div class="intro">
-        Trámite presencial para solicitar la <strong>baja comercial</strong> de
-        una actividad ante la Municipalidad de Santa Rosa. En caso de existir
-        apoderado, deberá adjuntar poder de representación y DNI de la misma.
+        Seguí los pasos a continuación para gestionar el
+        <strong>cambio de rubro o anexo de actividad comercial</strong>. Luego
+        de obtener los certificados correspondientes, deberás solicitar un
+        <a
+          class="link"
+          href="https://www.santarosa.gob.ar/turnos-online/"
+          target="_blank"
+          >turno web</a
+        >
+        y presentar la documentación en la
+        <strong>Dirección de Comercio y Servicios</strong>
+        (Bartolomé Mitre 62).
       </div>
 
-      <!-- DOCUMENTACIÓN REQUERIDA -->
+      <!-- PASOS -->
+      <div class="content-card">
+        <h2 class="section-title">
+          <span class="title-icon icon-blue">
+            <svg viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </span>
+          Pasos a Seguir
+        </h2>
+
+        <ol class="steps-list">
+          <li>
+            <span class="step-num">1</span>
+            <span>
+              Descargar la planilla denominada
+              <strong
+                >“Certificado Autorización de Uso del Suelo y Aptitud
+                Técnica”</strong
+              >, o solicitarla por mail a:
+              <a href="mailto:dir.planeamientourbano@santarosa.gob.ar">
+                dir.planeamientourbano@santarosa.gob.ar
+              </a>
+            </span>
+          </li>
+
+          <li>
+            <span class="step-num">2</span>
+            <span>
+              Presentar la planilla completa en
+              <strong>Mesa de Entradas Generales (San Martín 50)</strong>,
+              previo pago del sellado correspondiente. Adjuntar plano municipal
+              conforme a obra (pueden ser fotocopias por partes, pero debe
+              constar el plano completo incluyendo la carátula).
+            </span>
+          </li>
+
+          <li>
+            <span class="step-num">3</span>
+            <span>
+              Si la actividad es de
+              <strong>elaboración y venta de alimentos</strong>, deberá
+              completar de manera presencial la planilla de pre-consulta
+              bromatológica. Agentes de la Subdirección de Sanidad y Control de
+              Actividades Económicas se comunicarán vía correo electrónico para
+              acordar la inspección.
+            </span>
+          </li>
+
+          <li>
+            <span class="step-num">4</span>
+            <span>
+              Poseer <strong>Libreta Sanitaria Actualizada</strong> o tramitarla
+              ingresando a
+              <a href="./curso_manipulacion_alimentos.html" target="_blank"
+                >libreta-sanitaria</a
+              >
+            </span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- DOCUMENTACIÓN -->
       <div class="content-card">
         <h2 class="section-title">
           <span class="title-icon icon-green">
@@ -444,26 +590,51 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </span>
-          Documentación Requerida
+          Documentación Adicional
         </h2>
+
         <ul class="doc-list">
-          <li>DNI</li>
           <li>
-            Certificado libre deuda, Tasa por Seguridad e Higiene — lo solicita
-            en la Dirección de Comercio y Servicios
+            Certificado libre deuda de Tasa por Seguridad e Higiene. En caso de
+            poseer deuda dirigirse a la Dirección de Rentas (Alsina N° 120).
           </li>
+
           <li>
-            Certificado libre deuda, Juzgado Municipal de Faltas — lo solicita
-            la Dirección de Comercio y Servicios. En caso de poseer deuda,
-            dirigirse al Juzgado de Faltas (Chile N° 702)
+            Certificado libre deuda del Juzgado Municipal de Faltas. En caso de
+            poseer deuda dirigirse con anterioridad al Juzgado de Faltas (Chile
+            702).
           </li>
+
           <li>
-            Solicitud de baja comercial — debe ser firmada por el titular al
-            momento de presentarse con el DNI y los certificados solicitados
+            Constancia actualizada de inscripción en Ingresos Brutos y
+            constancia actualizada de AFIP.
           </li>
+
           <li class="conditional">
-            <span class="cond-label">Solo en caso de fallecimiento</span>
-            Acta de defunción del titular
+            <span class="cond-label"
+              >Actuantes en representación de firma comercial</span
+            >
+            Copia del Poder de Representación y fotocopia de D.N.I. (fotocopias
+            certificadas).
+          </li>
+
+          <li>
+            Certificado actualizado de la sociedad y sus modificatorias,
+            otorgado por la Dirección de Superintendencia de Personas Jurídicas
+            y Registro Público de Comercio (San Martín Oeste 32). Tel: 387360 /
+            414190.
+          </li>
+
+          <li>
+            En caso de modificación, copia del contrato societario y sus
+            modificatorias, con firma certificada y legalizada.
+          </li>
+
+          <li>Declaración Jurada de los carteles publicitarios a utilizar.</li>
+
+          <li>
+            Contrato de locación intervenido por la DGR, con firma certificada
+            de locador y locatario por policía o escribano.
           </li>
         </ul>
       </div>
@@ -486,7 +657,7 @@
           presentación de la solicitud.
         </p>
       </div>
-      <!-- <div class="content-card">
+      <!--<div class="content-card">
         <h2 class="section-title">
           <span class="title-icon icon-orange">
             <svg viewBox="0 0 24 24">
@@ -506,12 +677,24 @@
           </thead>
           <tbody>
             <tr>
-              <td>Derechos de oficina</td>
-              <td>$140</td>
+              <td>
+                Tasa por servicio de habilitación
+                <br />
+                <span class="note-cell">Según Actividad — Art. 54*</span>
+              </td>
+              <td>Según Actividad</td>
             </tr>
             <tr>
               <td>Certificado Libre Deuda</td>
               <td>$474,60</td>
+            </tr>
+            <tr>
+              <td>Derechos de oficina</td>
+              <td>$140</td>
+            </tr>
+            <tr>
+              <td>Por foja</td>
+              <td>$42</td>
             </tr>
           </tbody>
         </table>
@@ -521,7 +704,8 @@
           Las liquidaciones deberán ser abonadas en las cajas de la
           Municipalidad de Santa Rosa.
         </div>
-      </div> -->
+      </div>
+      -->
     </div>
 
     <footer>
