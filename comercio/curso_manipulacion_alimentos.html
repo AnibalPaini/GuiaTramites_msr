@@ -274,6 +274,8 @@
         font-size: 0.93rem;
         line-height: 1.65;
         color: #2d3748;
+        overflow-wrap: break-word;
+        word-break: break-word;
       }
       .step-num {
         min-width: 30px;
@@ -428,6 +430,48 @@
         .content-card,
         .contact-card {
           padding: 22px 18px;
+        }
+        /* Compact two-column grid: icon in column 1, label+value in column 2.
+           Place the svg in the left cell spanning the two rows, keep the
+           label on the first row and the value on the second row. Prevent
+           arbitrary character breaks in links. */
+        .contact-row {
+          display: grid;
+          grid-template-columns: 36px 1fr;
+          grid-auto-rows: auto;
+          gap: 6px 12px;
+          align-items: start;
+        }
+        .contact-row > svg {
+          grid-column: 1;
+          grid-row: 1 / 3;
+          width: 20px;
+          height: 20px;
+          margin: 0;
+        }
+        .contact-row > span {
+          grid-column: 2;
+          grid-row: 1;
+          margin: 0;
+        }
+        /* Any other child (link or value container) should sit in column 2 row 2 */
+        .contact-row > :not(svg):not(span) {
+          grid-column: 2;
+          grid-row: 2;
+        }
+        /* Keep phone numbers on one line, allow emails/addresses to wrap at
+           sensible boundaries (not breaking into single characters). */
+        .contact-row a[href^="tel"] {
+          white-space: nowrap;
+        }
+        .contact-row a {
+          color: #0066b2;
+          text-decoration: none;
+          font-weight: 600;
+          word-break: break-word;
+          overflow-wrap: break-word;
+          white-space: normal;
+          display: inline-block;
         }
       }
     </style>
@@ -620,7 +664,7 @@
               <circle cx="12" cy="10" r="3" />
             </svg>
             <span>Dirección</span>
-            Av. Santiago Marzo Este 925
+            <div class="contact-value">Av. Santiago Marzo Este 925</div>
           </div>
         </div>
       </div>

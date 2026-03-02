@@ -298,6 +298,8 @@
         font-size: 0.92rem;
         line-height: 1.55;
         color: #2d3748;
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
       .info-row svg {
         width: 20px;
@@ -316,9 +318,16 @@
         text-decoration: none;
         font-weight: 600;
         margin-right: 5px;
+        word-break: break-word;
+        white-space: normal;
       }
       .info-row a:hover {
         text-decoration: underline;
+      }
+
+      .info-row .info-text {
+        flex: 1 1 auto;
+        min-width: 0;
       }
 
       /* ── FOOTER ── */
@@ -434,10 +443,13 @@
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <a
-              href="https://geonodeide.santarosa.gob.ar/layers/geonode_data:geonode:Centros_de_Gestion_Social_STAROSA"
-              >Centros de Gestión Social</a
-            >del barrio correspondiente.
+            <div class="info-text">
+              <a
+                href="https://geonodeide.santarosa.gob.ar/layers/geonode_data:geonode:Centros_de_Gestion_Social_STAROSA"
+                >Centros de Gestión Social</a
+              >
+              del barrio correspondiente.
+            </div>
           </div>
           <div class="info-row">
             <svg viewBox="0 0 24 24">
