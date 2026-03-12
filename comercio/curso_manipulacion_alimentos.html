@@ -343,6 +343,36 @@
         color: #003f7e;
       }
 
+      /* GRATUITO HIGHLIGHT */
+      .gratuito-box {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(135deg, #e6f9ee, #f0fdf4);
+        border: 1.5px solid #a3e4b8;
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin-top: 16px;
+      }
+      .gratuito-box svg {
+        width: 28px;
+        height: 28px;
+        stroke: #27ae60;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      .gratuito-box p {
+        font-size: 0.92rem;
+        color: #2d3748;
+        line-height: 1.5;
+      }
+      .gratuito-box strong {
+        color: #1e7a3e;
+      }
+
       /* CONTACT CARD */
       .contact-card {
         background: white;
@@ -609,6 +639,15 @@
           <p>
             El <strong>Carnet de Manipulación de Alimentos</strong> tiene
             vigencia por <strong>3 años</strong>.
+          </p>
+        </div>
+
+        <div class="gratuito-box">
+          <svg viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          <p>
+            Este trámite es <strong>100% gratuito</strong>.
           </p>
         </div>
       </div>
