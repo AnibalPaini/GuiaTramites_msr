@@ -7,27 +7,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@200;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <style>
+      :root {
+        --azul-oscuro: #003f7e;
+        --azul-medio: #0066b2;
+        --azul-claro: #00a0e3;
+        --rosa: #ec0e6b;
+        --gris-oscuro: #231f20;
+        --gris-medio: #626366;
+        --fondo: #0c5a93;
+      }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        font-family: "Montserrat", sans-serif;
+        font-family: "Montserrat", "Segoe UI", sans-serif;
+        color: var(--gris-oscuro);
+        background: var(--fondo);
         line-height: 1.6;
-        color: #333;
-        background: #f0f4f8;
+        -webkit-font-smoothing: antialiased;
       }
 
-      /* ── HEADER ── */
-            .header-top {
+      /* ── HEADER TOP (logo blanco) ── */
+      .header-top {
         background: white;
-        padding: 15px 0;
+        padding: 14px 0;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         position: sticky;
         top: 0;
@@ -40,687 +52,471 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
       }
-      .logo {
-        height: 70px;
+      .header-logo {
+        height: 64px;
         width: auto;
       }
 
-      /* ── HERO ── */
-      .hero {
-        background: linear-gradient(
-          135deg,
-          #003f7e 0%,
-          #0066b2 60%,
-          #00a0e3 100%
-        );
-        padding: 56px 20px 48px;
-        text-align: center;
+      /* ── PÁGINA / SECCIÓN PDF ── */
+      .page {
         position: relative;
-        overflow: hidden;
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        border-radius: 50%;
-        border: 60px solid rgba(255, 255, 255, 0.06);
-        top: -200px;
-        right: -100px;
-      }
-      .hero::after {
-        content: "";
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        border: 40px solid rgba(255, 255, 255, 0.05);
-        bottom: -180px;
-        left: -80px;
+        background: var(--fondo);
+        padding-bottom: 60px;
       }
 
-      .hero-inner {
-        position: relative;
-        z-index: 2;
-      }
-
-      .hero-icon {
-        width: 80px;
-        height: 80px;
-        background: white;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      }
-      .hero-icon svg {
-        width: 42px;
-        height: 42px;
-        fill: none;
-        stroke: #0066b2;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .hero h1 {
-        font-size: clamp(1.8rem, 4vw, 2.8rem);
-        font-weight: 800;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: -0.5px;
-        margin-bottom: 10px;
-      }
-      .hero-subtitle {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1rem;
-        font-weight: 300;
-        max-width: 520px;
-        margin: 0 auto 28px;
-        line-height: 1.6;
-      }
-
-      .cta-button {
-        display: inline-block;
-        background: white;
-        color: #0066b2;
-        padding: 14px 38px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: 0.3s;
-        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
-        position: relative;
-        z-index: 2;
-      }
-      .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
-      }
-
-      /* ── CONTAINER ── */
-      .container {
-        max-width: 1000px;
+      /* ── BLOQUE TIPO VEHÍCULO ── */
+      .vehicle-block {
+        max-width: 1080px;
         margin: 0 auto;
-        padding: 50px 20px 70px;
+        padding: 50px 24px 0;
       }
 
-      .breadcrumb {
-        font-size: 0.88em;
-        margin-bottom: 32px;
-        color: #626366;
-      }
-      .breadcrumb a {
-        color: #0066b2;
-        text-decoration: none;
-      }
-      .breadcrumb a:hover {
-        text-decoration: underline;
-      }
-
-      .intro {
-        font-size: 1.1em;
-        color: #2d3748;
-        margin-bottom: 36px;
-        line-height: 1.8;
-        font-weight: 500;
-        background: white;
-        padding: 24px 28px;
-        border-radius: 12px;
-        border-top: 5px solid #0066b2;
-        box-shadow: 0 2px 12px rgba(0, 63, 126, 0.08);
-      }
-
-      /* ── CARDS ── */
-      .content-card {
-        background: white;
-        border-radius: 12px;
-        padding: 36px;
-        margin-bottom: 24px;
-        box-shadow: 0 2px 12px rgba(0, 63, 126, 0.07);
-      }
-
-      .section-title {
-        font-size: 1.4em;
-        font-weight: 700;
-        color: #003f7e;
-        margin-bottom: 22px;
+      /* ── BANNER HERO (imagen + título) ── */
+      .banner {
+        position: relative;
+        width: 100%;
+        height: clamp(260px, 44vw, 440px);
+        overflow: hidden;
         display: flex;
         align-items: center;
-        gap: 12px;
+        justify-content: center;
+        text-align: center;
+        color: white;
       }
-      .section-title .title-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: 8px;
+      .banner img.bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .banner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 30, 60, 0.55) 0%,
+          rgba(0, 50, 100, 0.7) 100%
+        );
+        z-index: 1;
+      }
+      .banner-inner {
+        position: relative;
+        z-index: 2;
+        padding: 0 20px;
+        animation: fadeInUp 0.8s ease both;
+      }
+      .banner-logo {
+        height: 70px;
+        width: auto;
+        margin-bottom: 14px;
+        filter: brightness(0) invert(1);
+      }
+      .banner h1 {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        font-weight: 900;
+        letter-spacing: -0.5px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+        line-height: 1.05;
+      }
+      .banner .subtitle {
+        margin-top: 8px;
+        font-size: clamp(1rem, 2.2vw, 1.5rem);
+        font-weight: 300;
+        opacity: 0.95;
+        letter-spacing: 0.3px;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── CONTENIDO DE PÁGINA ── */
+      .page-content {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 50px 24px 0;
+        color: white;
+        position: relative;
+      }
+
+      .section-heading {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        color: white;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+      }
+      .section-heading-rule {
+        width: 100%;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.35);
+        margin-bottom: 28px;
+      }
+
+      /* ── DOC LIST (estilo PDF) ── */
+      .doc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .doc-list li {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 22px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 40px;
+        color: white;
+        font-size: 0.98rem;
+        font-weight: 500;
+        line-height: 1.45;
+        backdrop-filter: blur(4px);
+        transition: 0.25s;
+      }
+      .doc-list li:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: translateX(4px);
+      }
+      .doc-list li .arrow {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        border-radius: 50%;
+        background: var(--azul-claro);
         display: inline-flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
       }
-      .section-title .title-icon svg {
-        width: 22px;
-        height: 22px;
+      .doc-list li .arrow svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: white;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ── INFO BOX ── */
+      .info-box {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 14px;
+        padding: 26px 30px;
+        backdrop-filter: blur(4px);
+        color: white;
+        margin-top: 50px;
+      }
+      .info-box h3 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 18px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .info-box h3::before {
+        content: "";
+        width: 36px;
+        height: 3px;
+        background: var(--azul-claro);
+        border-radius: 2px;
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+      }
+      .info-item .icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        border-radius: 50%;
+        background: var(--azul-claro);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .info-item .icon svg {
+        width: 20px;
+        height: 20px;
         fill: none;
         stroke: white;
         stroke-width: 2;
         stroke-linecap: round;
         stroke-linejoin: round;
       }
-      .icon-blue {
-        background: #0066b2;
+      .info-item .label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        opacity: 0.7;
+        display: block;
+        margin-bottom: 2px;
       }
-      .icon-teal {
-        background: #00a0e3;
-      }
-      .icon-pink {
-        background: #ec0e6b;
-      }
-      /* Info */
-      /* INFO BLOCK */
-      .info-block {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .info-row {
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        padding: 13px 16px;
-        background: #f7fafc;
-        border-radius: 10px;
-        font-size: 0.92rem;
-        line-height: 1.55;
-        color: #2d3748;
-        word-break: break-word;
-      }
-      .info-row svg {
-        width: 20px;
-        height: 20px;
-        stroke: #0066b2;
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        flex-shrink: 0;
-        margin-top: 1px;
-      }
-      .info-row a {
-        color: #0066b2;
-        text-decoration: none;
+      .info-item .value {
+        font-size: 0.98rem;
         font-weight: 600;
+        line-height: 1.35;
       }
-      .info-row a:hover {
+      .info-item a {
+        color: white;
+        text-decoration: none;
+      }
+      .info-item a:hover {
         text-decoration: underline;
       }
-
-      /* ── VEHICLE TABS ── */
-      .tabs {
-        display: flex;
-        gap: 0;
-        margin-bottom: 28px;
-        border-radius: 10px;
-        overflow: hidden;
-        border: 2px solid #e2e8f0;
-      }
-      .tab-btn {
-        flex: 1;
-        padding: 14px 20px;
-        background: #f7fafc;
-        border: none;
-        cursor: pointer;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 600;
-        font-size: 0.92rem;
-        color: #626366;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        transition:
-          background 0.2s,
-          color 0.2s;
-        border-right: 2px solid #e2e8f0;
-      }
-      .tab-btn:last-child {
-        border-right: none;
-      }
-      .tab-btn.active {
-        background: #0066b2;
-        color: white;
-      }
-      .tab-btn svg {
-        width: 22px;
-        height: 22px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+      @media (max-width: 860px) {
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
-      .tab-panel {
-        display: none;
-      }
-      .tab-panel.active {
-        display: block;
-      }
-
-      /* ── DOC LIST ── */
-      .doc-list {
-        list-style: none;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .doc-list li {
-        padding: 14px 18px 14px 52px;
-        background: #f7fafc;
-        border-radius: 8px;
-        border-left: 4px solid #00a0e3;
-        position: relative;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        color: #2d3748;
-      }
-      .doc-list li::before {
-        content: "";
-        position: absolute;
-        left: 18px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230066b2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E")
-          center/contain no-repeat;
-        flex-shrink: 0;
-      }
-
-      .doc-list li.highlight {
-        border-left-color: #ec0e6b;
-        background: #fff5f8;
-      }
-      .doc-list li.highlight::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ec0e6b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
-      }
-
-      /* ── ALERT ── */
+      /* ── ALERT BOX (IMPORTANTE) ── */
       .alert-box {
-        background: #fff9e6;
-        border-left: 5px solid #ec0e6b;
-        border-radius: 0 8px 8px 0;
-        padding: 20px 24px;
-        margin: 28px 0 0;
+        margin-top: 36px;
+        background: #f1f5f9;
+        color: var(--gris-oscuro);
+        border-left: 6px solid var(--azul-oscuro);
+        border-radius: 8px;
+        padding: 22px 26px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
       }
       .alert-box strong {
-        color: #ec0e6b;
         display: block;
-        margin-bottom: 8px;
-        font-size: 1em;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.4px;
+        color: var(--azul-oscuro);
+        font-size: 1.05rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
       }
       .alert-box p {
         margin: 0;
-        line-height: 1.7;
-        font-size: 0.95rem;
-      }
-
-      /* ── STEPS ── */
-      .steps {
-        counter-reset: steps;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .step {
-        display: flex;
-        gap: 18px;
-        align-items: flex-start;
-        padding: 16px 20px;
-        background: #f7fafc;
-        border-radius: 10px;
-      }
-      .step-num {
-        width: 36px;
-        height: 36px;
-        background: linear-gradient(135deg, #0066b2, #00a0e3);
-        color: white;
-        font-weight: 800;
-        font-size: 1rem;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .step-body strong {
-        display: block;
-        color: #003f7e;
-        font-weight: 700;
-        margin-bottom: 3px;
-        font-size: 0.95rem;
-      }
-      .step-body span {
-        font-size: 0.88rem;
-        color: #626366;
-      }
-
-      /* ── CTA BOTTOM ── */
-      .cta-bottom {
-        text-align: center;
-        margin-top: 40px;
-      }
-      .cta-bottom .cta-button {
-        background: #0066b2;
-        color: white;
-        font-size: 1.05rem;
-        padding: 16px 44px;
-      }
-      .cta-bottom .cta-button:hover {
-        background: #003f7e;
+        font-size: 0.94rem;
+        line-height: 1.65;
+        color: #374151;
       }
 
       /* ── FOOTER ── */
       footer {
         text-align: center;
-        padding: 24px 0 32px;
+        padding: 40px 20px 36px;
+        background: var(--fondo);
       }
       footer img {
-        max-width: min(660px, 90vw);
+        max-width: min(640px, 90vw);
+        filter: brightness(0) invert(1);
+        opacity: 0.9;
       }
 
       @media (max-width: 640px) {
-        .content-card {
-          padding: 24px 18px;
+        .banner-logo {
+          height: 54px;
         }
-        .tabs {
-          flex-direction: column;
+        .doc-list li {
+          font-size: 0.9rem;
+          padding: 14px 18px;
+          border-radius: 24px;
         }
-        .tab-btn {
-          border-right: none;
-          border-bottom: 2px solid #e2e8f0;
-        }
-        .tab-btn:last-child {
-          border-bottom: none;
-        }
-        .content-card:last-child h2:last-of-type {
-          font-size: 1.15em;
+        .page-content {
+          padding: 36px 18px 0;
         }
       }
     </style>
   </head>
   <body>
-    <!-- HEADER -->
-    <header class="header-top">
-      <div class="header-content">
-        <img
-          src="https://www.santarosa.gob.ar/wp-content/uploads/2024/12/LOGO_HORIZONTAL_COLOR_SMALL.png.webp"
-          alt="Municipalidad de Santa Rosa"
-          class="logo"
-        />
+    <section class="page">
+      <!-- BANNER AUTOMOTORES -->
+      <div class="banner">
+        <img src="Banner-auto.png" alt="" class="bg" />
+        <div class="banner-inner">
+          <a href="www.santarosa.gob.ar/"
+            ><img
+              src="https://www.santarosa.gob.ar/wp-content/uploads/2024/12/LOGO_HORIZONTAL_COLOR_SMALL.png.webp"
+              alt="Municipalidad de Santa Rosa"
+              class="banner-logo"
+          /></a>
+          <h1>Restitución Vehicular</h1>
+          <p class="subtitle">Documentación Requerida</p>
+        </div>
       </div>
-    </header>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-inner">
-        <div class="hero-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 12a8 8 0 0116 0" />
-            <path d="M4 12l2-2M4 12l2 2" />
-            <rect x="5" y="14" width="14" height="7" rx="1.5" />
-            <path d="M8 14v-2h8v2" />
-            <circle cx="8" cy="20.5" r="1.5" fill="#0066b2" stroke="#0066b2" />
-            <circle cx="16" cy="20.5" r="1.5" fill="#0066b2" stroke="#0066b2" />
-          </svg>
-        </div>
-        <h1>Restitución Vehicular</h1>
-        <p class="hero-subtitle">
-          Conocé los requisitos para recuperar tu vehículo remitido al corralón
-          municipal de Santa Rosa.
-        </p>
+      <!-- MOTOS -->
+      <div class="vehicle-block">
+        <h2 class="section-heading">Motos</h2>
+        <div class="section-heading-rule"></div>
+
+        <ul class="doc-list">
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Documento de Identidad y fotocopia del mismo
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Título, Tarjeta de Identificación Vehicular y fotocopias de los
+            mismos
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Si es legítimo poseedor acreditar tal condición
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Licencia de Conducir habilitante para el tipo de vehículo de que se
+            trate y fotocopia de la misma
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Comprobante de póliza de Seguro Obligatorio en vigencia (que deberá
+            ser presentado al momento de proceder al retiro efectivo del
+            vehículo)
+          </li>
+        </ul>
       </div>
-    </div>
 
-    <!-- CONTENIDO -->
-    <div class="container">
-      <p class="breadcrumb">
-        <a href="transito.html">Tránsito</a> &rsaquo; Restitución Vehicular
-      </p>
+      <!-- AUTOMOTORES -->
+      <div class="vehicle-block">
+        <h2 class="section-heading">Automotores</h2>
+        <div class="section-heading-rule"></div>
 
-      <p class="intro">
-        La Restitución Vehicular es el trámite mediante el cual el propietario o
-        legítimo poseedor de un vehículo remitido al corralón municipal puede
-        recuperarlo, previo cumplimiento de los requisitos administrativos y
-        legales establecidos por la Municipalidad de Santa Rosa.
-      </p>
-
-      <!-- DOCUMENTACIÓN -->
-      <div class="content-card">
-        <h2 class="section-title">
-          <span class="title-icon icon-blue">
-            <svg viewBox="0 0 24 24">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="9" y1="13" x2="15" y2="13" />
-              <line x1="9" y1="17" x2="13" y2="17" />
-            </svg>
-          </span>
-          Documentación requerida
-        </h2>
-
-        <!-- TABS -->
-        <div class="tabs">
-          <button class="tab-btn active" onclick="switchTab('autos', this)">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="9" width="20" height="10" rx="2" />
-              <path d="M6 9V7a2 2 0 012-2h8a2 2 0 012 2v2" />
-              <circle cx="7" cy="19" r="2" />
-              <circle cx="17" cy="19" r="2" />
-            </svg>
-            Automotores
-          </button>
-          <button class="tab-btn" onclick="switchTab('motos', this)">
-            <svg viewBox="0 0 24 24">
-              <circle cx="5.5" cy="17.5" r="3.5" />
-              <circle cx="18.5" cy="17.5" r="3.5" />
-              <path d="M15 6h-3l-3 6H5.5M15 6l3 5h.5M15 6l-1.5 6" />
-            </svg>
-            Motos
-          </button>
-        </div>
-
-        <!-- AUTOMOTORES -->
-        <div id="tab-autos" class="tab-panel active">
-          <ul class="doc-list">
-            <li>Documento de Identidad y fotocopia del mismo</li>
-            <li>
-              Licencia de Conducir habilitante para el tipo de vehículo de que
-              se trate y fotocopia de la misma
-            </li>
-            <li>
-              Título y Tarjeta de Identificación Vehicular con sus respectivas
-              fotocopias
-            </li>
-            <li>Si es legítimo poseedor, acreditar tal condición</li>
-            <li class="highlight">
-              Comprobante de póliza de Seguro Obligatorio en vigencia — debe
-              presentarse al momento del retiro efectivo del vehículo
-            </li>
-            <li>
-              Cumplimentar las medidas de seguridad obligatoria para vehículos
-              automotores
-            </li>
-          </ul>
-        </div>
-
-        <!-- MOTOS -->
-        <div id="tab-motos" class="tab-panel">
-          <ul class="doc-list">
-            <li>Documento de Identidad y fotocopia del mismo</li>
-            <li>
-              Licencia de Conducir habilitante para el tipo de vehículo de que
-              se trate y fotocopia de la misma
-            </li>
-            <li>
-              Título y Tarjeta de Identificación Vehicular con sus respectivas
-              fotocopias
-            </li>
-            <li>Si es legítimo poseedor, acreditar tal condición</li>
-            <li class="highlight">
-              Comprobante de póliza de Seguro Obligatorio en vigencia — debe
-              presentarse al momento del retiro efectivo del vehículo
-            </li>
-            <li>Libre deuda de patentes</li>
-            <li>
-              Cumplimentar las medidas de seguridad obligatoria para motos y
-              vehículos
-            </li>
-          </ul>
-        </div>
+        <ul class="doc-list">
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Documento de Identidad y fotocopia del mismo
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Licencia de Conducir habilitante para el tipo de vehículo de que se
+            trate y fotocopia de la misma
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Título, Tarjeta de Identificación Vehicular y fotocopias de los
+            mismos
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Si es legítimo poseedor acreditar tal condición
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Comprobante de póliza de Seguro Obligatorio en vigencia (que deberá
+            ser presentado al momento de proceder al retiro efectivo del
+            vehículo)
+          </li>
+          <li>
+            <span class="arrow"
+              ><svg viewBox="0 0 24 24">
+                <polyline points="9 6 15 12 9 18" /></svg></span>
+            Cumplimentar las medidas de seguridad obligatoria vehículos
+            automotores
+          </li>
+        </ul>
 
         <div class="alert-box">
-          <strong>Importante</strong>
+          <strong>IMPORTANTE</strong>
           <p>
-            El Seguro Obligatorio debe estar vigente al momento del retiro del
-            vehículo. Sin este comprobante, no se podrá efectuar la entrega,
-            independientemente del cumplimiento del resto de los requisitos.
+            Asegúrese de traer toda la documentación original y las fotocopias
+            correspondientes.<br />
+            El comprobante de seguro obligatorio debe presentarse al momento del
+            retiro del vehículo.
           </p>
         </div>
       </div>
 
-      <!-- DÓNDE -->
-      <div class="content-card">
-        <h2 class="section-title">
-          <span class="title-icon icon-teal">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-          </span>
-          ¿Dónde se realiza?
-        </h2>
-        <div class="info-block">
-          <div class="info-row">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-            <span
-              ><strong>Oficina de Restitución de Vehicular</strong> — Escalante
-              985
-            </span>
-          </div>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-              />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            <a href="mailto:transito@santarosa.gob.ar"
-              >transito@santarosa.gob.ar</a
-            >
-          </div>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            Lunes a viernes de 7:30 a 13:00 hs.
-          </div>
-        </div>
-      </div>
-
-      <!-- PASOS -->
-      <div class="content-card">
-        <h2 class="section-title">
-          <span class="title-icon icon-teal">
-            <svg viewBox="0 0 24 24">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            </svg>
-          </span>
-          ¿Cómo realizar el trámite?
-        </h2>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <strong>Reuní la documentación</strong>
-              <span
-                >Juntá todos los documentos originales y sus correspondientes
-                fotocopias según el tipo de vehículo.</span
-              >
+      <!-- INFORMACIÓN (full width) -->
+      <div style="max-width: 1180px; margin: 28px auto 0; padding: 0 24px">
+        <div class="info-box">
+          <h3>Información</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </span>
+              <div>
+                <span class="label">Ubicación</span>
+                <span class="value">Escalante 985</span>
+              </div>
             </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <strong
-                >Presentate en la oficina de Restitución de Vehicular</strong
-              >
-              <span
-                >Concurrí personalmente con toda la documentación para iniciar
-                el trámite de restitución en Escalante 985.</span
-              >
+            <div class="info-item">
+              <span class="icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </span>
+              <div>
+                <span class="label">Horario de atención</span>
+                <span class="value">08:00 a 14:30 hs</span>
+              </div>
             </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <strong>Retirá tu vehículo en el corralón</strong>
-              <span
-                >Una vez aprobada la documentación, podrás retirar el vehículo
-                presentando el seguro obligatorio vigente.</span
-              >
+            <div class="info-item">
+              <span class="icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                  />
+                </svg>
+              </span>
+              <div>
+                <span class="label">Celular</span>
+                <span class="value"
+                  ><a href="tel:+542954862134">2954 862134</a></span
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- AVISO -->
-      <div class="content-card">
-        <h2 class="section-title">
-          <span class="title-icon icon-pink">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
-              />
-              <line x1="12" y1="9" x2="12" y2="13" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-          </span>
-          Consideraciones adicionales
-        </h2>
-        <ul class="doc-list">
-          <li>
-            Los costos de estadía en el corralón corren por cuenta del
-            propietario del vehículo.
-          </li>
-          <li>
-            En el caso de vehículos con deuda de patentes (motos), deberá
-            regularizarse antes de iniciar el trámite.
-          </li>
-          <li>
-            Los vehículos retenidos con causas penales en curso tienen un
-            proceso diferente; consultar en la dependencia correspondiente.
-          </li>
-        </ul>
-      </div>
-    </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -729,18 +525,5 @@
         alt="Municipalidad de Santa Rosa"
       />
     </footer>
-
-    <script>
-      function switchTab(id, btn) {
-        document
-          .querySelectorAll(".tab-panel")
-          .forEach((p) => p.classList.remove("active"));
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((b) => b.classList.remove("active"));
-        document.getElementById("tab-" + id).classList.add("active");
-        btn.classList.add("active");
-      }
-    </script>
   </body>
 </html>
